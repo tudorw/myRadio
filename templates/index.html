@@ -16,64 +16,55 @@
     <img id="voice3" src="static/3.png" width=80 alt="Bob and Jane" onclick="selectVoice('voice3')" style="opacity:0.5;">
     <img id="voice4" src="static/4.png" width=80 alt="Sarah and Nigel" onclick="selectVoice('voice4')" style="opacity:0.5;">
 </div><br/>
-<label>Choose the announcers language:</label><br/><br/>
-<select id="languages">
-    <option value="en">English</option>
-    <option value="es">Spanish</option>
-    <option value="fr">French</option>
-    <option value="hi">Hindi</option>
-    <option value="it">Italian</option>
-    <option value="de">German</option>
-    <option value="pl">Polish</option>
-    <option value="pt">Portuguese</option>
+
+<select id="languages" style="font-size:20pt">
+    <option value="en">Read Out English</option>
+    <option value="es">Read Out Spanish</option>
+    <option value="fr">Read Out French</option>
+    <option value="hi">Read Out Hindi</option>
+    <option value="it">Read Out Italian</option>
+    <option value="de">Read Out German</option>
+    <option value="pl">Read Out Polish</option>
+    <option value="pt">Read Out Portuguese</option>
 </select>
-<!-- top level feed language --><br/><br/>
-<label>Where would you like your news from?</label><br/><br/>
 <select id="feedLanguage">
-    <option value="ar">Arabia</option>
-    <option value="zh">China</option>
-    <option value="en">England</option>
-    <option value="fr">France</option>
-    <option value="de">Germany</option>
-    <option value="hi">India</option>
-    <option value="it">Italy</option>
-    <option value="ja">Japan</option>
-    <option value="pl">Poland</option>
-    <option value="pt">Portugal</option>
-    <option value="tr">Turkey</option>
-    <option value="ru">Russia</option>
-    <option value="es">Spain</option>
+    <option value="zh">News Published In China</option>
+    <option value="en">News Published In Britain</option>
+    <option value="de">News Published In Germany</option>
+    <option value="hi">News Published In India</option>
+    <option value="ja">News Published In Japan</option>
+    <option value="ru">News Published In Russia</option>
+    <option value="es">News Published In Spain</option>
 </select><br/><br/>
-<label>Select Topics That Interest You</label><br/><br/>
+<label>Select A Topics That Interest You</label><br/><br/>
 <form id="feeds">
     <input type="checkbox" id="worldNews" name="worldNews" value="World News">
     <label for="worldNews"> World News</label><br>
-
     <input type="checkbox" id="nationalNews" name="nationalNews" value="National News">
     <label for="nationalNews"> National News</label><br>
     <input type="checkbox" id="politics" name="politics" value="Politics">
     <label for="politics"> Politics</label><br>
     <input type="checkbox" id="business" name="business" value="Business">
     <label for="business"> Business</label><br>
-    <input type="checkbox" id="technology" name="technology" value="Technology">
-    <label for="technology"> Technology</label><br>
+    <!-- <input type="checkbox" id="technology" name="technology" value="Technology">
+    <label for="technology"> Technology</label><br> -->
     <input type="checkbox" id="science" name="science" value="Science">
     <label for="science"> Science</label><br>
-    <input type="checkbox" id="health" name="health" value="Health">
+    <!-- <input type="checkbox" id="health" name="health" value="Health">
     <label for="health"> Health</label><br>
     <input type="checkbox" id="entertainment" name="entertainment" value="Entertainment">
-    <label for="entertainment"> Entertainment</label><br>
+    <label for="entertainment"> Entertainment</label><br> -->
     <input type="checkbox" id="sports" name="sports" value="Sports">
     <label for="sports"> Sports</label><br>
     <input type="checkbox" id="lifestyle" name="lifestyle" value="Lifestyle">
     <label for="lifestyle"> Lifestyle</label><br>
-    <input type="checkbox" id="education" name="education" value="Education">
-    <label for="education"> Education</label><br>
+    <!-- <input type="checkbox" id="education" name="education" value="Education">
+    <label for="education"> Education</label><br> -->
     <input type="checkbox" id="artsCulture" name="artsCulture" value="Arts & Culture">
     <label for="artsCulture"> Arts & Culture</label><br>
     <input type="checkbox" id="finance" name="finance" value="Finance">
     <label for="finance"> Finance</label><br>
-    <input type="checkbox" id="travel" name="travel" value="Travel">
+    <!-- <input type="checkbox" id="travel" name="travel" value="Travel">
     <label for="travel"> Travel</label><br>
     <input type="checkbox" id="foodDrink" name="foodDrink" value="Food & Drink">
     <label for="foodDrink"> Food & Drink</label><br>
@@ -90,7 +81,7 @@
     <input type="checkbox" id="religion" name="religion" value="Religion">
     <label for="religion"> Religion</label><br>
     <input type="checkbox" id="books" name="books" value="Books">
-    <label for="books"> Books</label><br>
+    <label for="books"> Books</label><br> -->
     <br/>
     Enabling Language Learner will first read the text in it's native form, then read the translation.<br><br>
     <select id="languagelearner">
@@ -119,7 +110,7 @@ function selectVoice(voiceId) {
     document.getElementById('feeds').addEventListener('submit', function(e) {
         e.preventDefault();
 
-        var selectedVoices = document.getElementById("voices").value;
+        var selectedVoices = selectedVoice; // Use the selectedVoice variable
         var selectedLanguage = document.getElementById("languages").value;
         var selectedFeedLanguage = document.getElementById("feedLanguage").value; // Added this line to get the selected feed language
         var selectedFeeds = [];
