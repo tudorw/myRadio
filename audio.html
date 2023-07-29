@@ -14,7 +14,8 @@
         var audioPlayer = document.getElementById('audioPlayer');
         var audioFiles = [];
         var intervalId;
-        var waitingAudio = '/audio/waiting.mp3'; // Path to your waiting audio file
+        var waitingAudio = ['/audio/waiting1.mp3', '/audio/waiting2.mp3', '/audio/waiting3.mp3', '/audio/waiting4.mp3', '/audio/waiting5.mp3']; // Paths to your waiting audio files
+
 
         function fetchAudioFile() {
             $.ajax({
@@ -58,8 +59,10 @@
             if (!intervalId) {
                 intervalId = setInterval(fetchAudioFile, 5000);
                 console.log('No new file found, playing waiting audio'); // Add console.log herel
-                        waitingAudio = '/audio/waiting.mp3'; // Path to your waiting audio file
-                        audioPlayer.src = waitingAudio;
+                        var randomIndex = Math.floor(Math.random() * waitingAudio.length);
+                        playwaitingAudio = waitingAudio[randomIndex]; // Randomly pick one from the waitingAudio array
+                        console.log(playwaitingAudio)
+                        audioPlayer.src = playwaitingAudio;
                         audioPlayer.loop = true;
                         audioPlayer.load();
                         audioPlayer.play();

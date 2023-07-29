@@ -73,7 +73,7 @@ def process():
     if package_to_install is not None:
         argostranslate.package.install_from_path(package_to_install.download())
     else:
-        print(f"No package available for translation from {from_code} to {to_code}")
+        print(f"No download required for translation from {from_code} to {to_code}")
 
     if request.method == 'POST':
         #voice = request.form.get('voice')
@@ -133,10 +133,19 @@ def process():
            
 
             
-            voices = ["Adam", "Elli"]
-            
+            announcers =  data.get('voices')
+            print (announcers)
+            if announcers == "voice1":
+                voices = ["Rachel"]
+            if announcers == "voice2":
+                voices = ["Adam", "CYw3kZ02Hs0563khs1Fj", "Elli"]
+            if announcers == "voice3":
+                voices = ["oWAxZDx7w5VEj9dCyTzz", "ErXwobaYiN019PkySvjV"]
+            if announcers == "voice4":
+                voices = ["SOYHLrjzK2X1ezoPC6cr", "jsCqWAovK2LkecY7zXl4"]
             voice = voices[voice_index]
             voice_index = (voice_index + 1) % len(voices)
+            print("Using Voice:" + voice)
                        
             audio = generate(
             text=translated_summary,
