@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- ... rest of your head tags ... -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <!-- ... rest of your body tags ... -->
+    <audio controls id="audioPlayer">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        var audioPlayer = document.getElementById('audioPlayer');
+        var audioFiles = [];
+        var intervalId;
+        var waitingAudio = '/audio/waiting.mp3'; // Path to your waiting audio file
+
+        function fetchAudioFile() {
+            $.ajax({
+                url: '/audiofiles',
+                type: 'GET',
+                success: function(response) {
+                    if (response.files.length > 0) {
+                        var newAudioFile = response.files[0]; // Get only the first file
+                        // Check if the new audio file is the same as the last one played
+                        if (audioFiles.length > 0 && audioFiles[0] === newAudioFile) {
+                            // If it is, don't do anything
+                            return;
+                        }
+                        // If it's not, update the audioFiles array and play the new audio
+                        audioFiles = [newAudioFile]; // Update the audioFiles array with only the new file
+                        // Play the new audio file
+                        audioPlayer.loop = false; // Ensure the audio player does not loop the new audio file
+                        audioPlayer.src = '/audio/' + newAudioFile;
+                        audioPlayer.load();
+                        audioPlayer.play();
+
+                        // If a new file is found, clear the interval
+                        if (intervalId) {
+                            clearInterval(intervalId);
+                            intervalId = null;
+                        }
+                    } else {
+                        // If no new file is found, play the waiting audio in a loop
+                        
+
+                    }
+                }
+            });
+        }
+
+        // Set up the 'ended' event listener for the audio player
+        audioPlayer.addEventListener('ended', function() {
+            // Fetch a new audio file when the current one ends
+            // If no new file is found, start an interval to keep checking
+            fetchAudioFile();
+            if (!intervalId) {
+                intervalId = setInterval(fetchAudioFile, 5000);
+                console.log('No new file found, playing waiting audio'); // Add console.log herel
+                        waitingAudio = '/audio/waiting.mp3'; // Path to your waiting audio file
+                        audioPlayer.src = waitingAudio;
+                        audioPlayer.loop = true;
+                        audioPlayer.load();
+                        audioPlayer.play();
+            }
+        }, false);
+
+        // Fetch the first audio file when the page loads
+        fetchAudioFile();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myRadio</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.14.0/js-yaml.min.js"></script>
+</head>
+<body style="font-size:16pt;">
+   <br/>
+<label>Choose your announcers</label>
+<div id="voices">
+    <img id="voice1" src="static/1.png" width=80 alt="Sarah and Jane" onclick="selectVoice('voice1')" style="opacity:0.5;" >
+    <img id="voice2" src="static/2.png" width=80 alt="Bob and Nigel" onclick="selectVoice('voice2')" style="opacity:0.5;">
+    <img id="voice3" src="static/3.png" width=80 alt="Bob and Jane" onclick="selectVoice('voice3')" style="opacity:0.5;">
+    <img id="voice4" src="static/4.png" width=80 alt="Sarah and Nigel" onclick="selectVoice('voice4')" style="opacity:0.5;">
+</div><br/>
+<label>Choose the announcers language:</label><br/><br/>
+<select id="languages">
+    <option value="en">English</option>
+    <option value="es">Spanish</option>
+    <option value="fr">French</option>
+    <option value="hi">Hindi</option>
+    <option value="it">Italian</option>
+    <option value="de">German</option>
+    <option value="pl">Polish</option>
+    <option value="pt">Portuguese</option>
+</select>
+<!-- top level feed language --><br/><br/>
+<label>Where would you like your news from?</label><br/><br/>
+<select id="feedLanguage">
+    <option value="ar">Arabia</option>
+    <option value="zh">China</option>
+    <option value="en">England</option>
+    <option value="fr">France</option>
+    <option value="de">Germany</option>
+    <option value="hi">India</option>
+    <option value="it">Italy</option>
+    <option value="ja">Japan</option>
+    <option value="pl">Poland</option>
+    <option value="pt">Portugal</option>
+    <option value="tr">Turkey</option>
+    <option value="ru">Russia</option>
+    <option value="es">Spain</option>
+</select><br/><br/>
+<label>Select Topics That Interest You</label><br/><br/>
+<form id="feeds">
+    <input type="checkbox" id="worldNews" name="worldNews" value="World News">
+    <label for="worldNews"> World News</label><br>
+
+    <input type="checkbox" id="nationalNews" name="nationalNews" value="National News">
+    <label for="nationalNews"> National News</label><br>
+    <input type="checkbox" id="politics" name="politics" value="Politics">
+    <label for="politics"> Politics</label><br>
+    <input type="checkbox" id="business" name="business" value="Business">
+    <label for="business"> Business</label><br>
+    <input type="checkbox" id="technology" name="technology" value="Technology">
+    <label for="technology"> Technology</label><br>
+    <input type="checkbox" id="science" name="science" value="Science">
+    <label for="science"> Science</label><br>
+    <input type="checkbox" id="health" name="health" value="Health">
+    <label for="health"> Health</label><br>
+    <input type="checkbox" id="entertainment" name="entertainment" value="Entertainment">
+    <label for="entertainment"> Entertainment</label><br>
+    <input type="checkbox" id="sports" name="sports" value="Sports">
+    <label for="sports"> Sports</label><br>
+    <input type="checkbox" id="lifestyle" name="lifestyle" value="Lifestyle">
+    <label for="lifestyle"> Lifestyle</label><br>
+    <input type="checkbox" id="education" name="education" value="Education">
+    <label for="education"> Education</label><br>
+    <input type="checkbox" id="artsCulture" name="artsCulture" value="Arts & Culture">
+    <label for="artsCulture"> Arts & Culture</label><br>
+    <input type="checkbox" id="finance" name="finance" value="Finance">
+    <label for="finance"> Finance</label><br>
+    <input type="checkbox" id="travel" name="travel" value="Travel">
+    <label for="travel"> Travel</label><br>
+    <input type="checkbox" id="foodDrink" name="foodDrink" value="Food & Drink">
+    <label for="foodDrink"> Food & Drink</label><br>
+    <input type="checkbox" id="automotive" name="automotive" value="Automotive">
+    <label for="automotive"> Automotive</label><br>
+    <input type="checkbox" id="realEstate" name="realEstate" value="Real Estate">
+    <label for="realEstate"> Real Estate</label><br>
+    <input type="checkbox" id="opinion" name="opinion" value="Opinion">
+    <label for="opinion"> Opinion</label><br>
+    <input type="checkbox" id="crime" name="crime" value="Crime">
+    <label for="crime"> Crime</label><br>
+    <input type="checkbox" id="environment" name="environment" value="Environment">
+    <label for="environment"> Environment</label><br>
+    <input type="checkbox" id="religion" name="religion" value="Religion">
+    <label for="religion"> Religion</label><br>
+    <input type="checkbox" id="books" name="books" value="Books">
+    <label for="books"> Books</label><br>
+    <br/>
+    Enabling Language Learner will first read the text in it's native form, then read the translation.<br><br>
+    <select id="languagelearner">
+        <option value="1">Read translation only</option>
+        <option value="2">Read original only</option>
+        <option value="3">Read original then translation.</option>
+        <option value="4">Read translation then original.</option>
+
+    </select>
+<br><br>
+    <input type="submit" value="Start myRadio">
+</form>
+<script>
+    window.onload = function() {
+    selectVoice('voice1');
+};
+    var selectedVoice = null;
+
+function selectVoice(voiceId) {
+    if (selectedVoice) {
+        document.getElementById(selectedVoice).style.opacity = 0.5;
+    }
+    selectedVoice = voiceId;
+    document.getElementById(selectedVoice).style.opacity = 1.0;
+}
+    document.getElementById('feeds').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var selectedVoices = document.getElementById("voices").value;
+        var selectedLanguage = document.getElementById("languages").value;
+        var selectedFeedLanguage = document.getElementById("feedLanguage").value; // Added this line to get the selected feed language
+        var selectedFeeds = [];
+        var checkboxes = document.querySelectorAll('#feeds input[type=checkbox]:checked');
+
+        for (var i = 0; i < checkboxes.length; i++) {
+            selectedFeeds.push(checkboxes[i].value);
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/process", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify({
+            "voices": selectedVoices,
+            "language": selectedLanguage,
+            "feedLanguage": selectedFeedLanguage, // Added this line to pass the selected feed language
+            "feeds": selectedFeeds
+        }));
+        xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                // The request was successful, do something with the response
+                var response = JSON.parse(xhr.responseText);
+                console.log(response);
+            } else {
+                // The request failed, handle the error
+                console.error('Request failed with status ' + xhr.status);
+            }
+        };
+    });
+</script>
+
+</body>
+</html>
