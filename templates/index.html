@@ -11,7 +11,7 @@
         .checkbox-container input[type="radio"] {
             display: none;
         }
-    
+
         /* Create a new custom radio button */
         .checkbox-container input[type="radio"] + label:before {
             content: '';
@@ -23,23 +23,22 @@
             border: 2px solid #345fa3;
             vertical-align: middle;
         }
-    
+
         /* Style for checked state */
         .checkbox-container input[type="radio"]:checked + label:before {
             background: #1ccde0;
         }
-    
+
         /* Style for hover state */
         .checkbox-container input[type="radio"]:hover + label:before {
             border-color: #174451;
         }
-    
+
         .checkbox-container input[type="radio"]:checked:hover + label:before {
             background: #bef619;
         }
     </style>
-      <style>
-        
+    <style>
         .flash-message {
             position: fixed;
             border-radius:9px;
@@ -53,235 +52,232 @@
             text-align: center;
             z-index: 1000;
         }
-        
-        </style>
-        <style>
-            .checkbox-container {
-                display: flex;
-                align-items: center;
-                margin-bottom: 20px;
-            }
-        
-            .checkbox-container input[type="checkbox"] {
-        margin-right: 20px;
-        height: 25px;
-        width: 25px;
-    }
-        
-            .checkbox-container label {
-                margin: 0;
-            }
+    </style>
+    <style>
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-            @font-face {
-    font-family: "Intel One Mono";
-    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-regular.woff2") format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-regular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
-}
+        .checkbox-container input[type="checkbox"] {
+            margin-right: 20px;
+            height: 25px;
+            width: 25px;
+        }
 
+        .checkbox-container label {
+            margin: 0;
+        }
 
-@font-face {
-    font-family: "Intel One Mono";
-    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-light.woff2") format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-light.woff") format("woff");
-    font-weight: 300;
-    font-style: normal;
-}
+        @font-face {
+            font-family: "Intel One Mono";
+            src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-regular.woff2") format("woff2"),
+            url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-regular.woff") format("woff");
+            font-weight: 400;
+            font-style: normal;
+        }
 
-@font-face {
-    font-family: "Intel One Mono";
-    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-medium.woff2") format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-medium.woff") format("woff");
-    font-weight: 500;
-    font-style: normal;
-}
+        @font-face {
+            font-family: "Intel One Mono";
+            src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-light.woff2") format("woff2"),
+            url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-light.woff") format("woff");
+            font-weight: 300;
+            font-style: normal;
+        }
 
-@font-face {
-    font-family: "Intel One Mono";
-    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-bold.woff2") format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-bold.woff") format("woff");
-    font-weight: 700;
-    font-style: normal;
-}
+        @font-face {
+            font-family: "Intel One Mono";
+            src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-medium.woff2") format("woff2"),
+            url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-medium.woff") format("woff");
+            font-weight: 500;
+            font-style: normal;
+        }
 
+        @font-face {
+            font-family: "Intel One Mono";
+            src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-bold.woff2") format("woff2"),
+            url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-bold.woff") format("woff");
+            font-weight: 700;
+            font-style: normal;
+        }
 
+        @font-face {
+            font-family: "Intel One Mono";
+            src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-italic.woff2") format("woff2"),
+            url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-italic.woff") format("woff");
+            font-weight: 400;
+            font-style: italic;
+        }
 
-@font-face {
-    font-family: "Intel One Mono";
-    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-italic.woff2") format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-italic.woff") format("woff");
-    font-weight: 400;
-    font-style: italic;
-}
+        @font-face {
+            font-family: "Intel One Mono";
+            src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-lightitalic.woff2") format("woff2"),
+            url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-lightitalic.woff") format("woff");
+            font-weight: 300;
+            font-style: italic;
+        }
 
+        @font-face {
+            font-family: "Intel One Mono";
+            src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-mediumitalic.woff2") format("woff2"),
+            url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-mediumitalic.woff") format("woff");
+            font-weight: 500;
+            font-style: italic;
+        }
 
-@font-face {
-    font-family: "Intel One Mono";
-    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-lightitalic.woff2") format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-lightitalic.woff") format("woff");
-    font-weight: 300;
-    font-style: italic;
-}
+        @font-face {
+            font-family: "Intel One Mono";
+            src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-bolditalic.woff2") format("woff2"),
+            url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-bolditalic.woff") format("woff");
+            font-weight: 700;
+            font-style: italic;
+        }
 
-@font-face {
-    font-family: "Intel One Mono";
-    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-mediumitalic.woff2") format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-mediumitalic.woff") format("woff");
-    font-weight: 500;
-    font-style: italic;
-}
-
-@font-face {
-    font-family: "Intel One Mono";
-    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-bolditalic.woff2") format("woff2"),
-    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-bolditalic.woff") format("woff");
-    font-weight: 700;
-    font-style: italic;
-}
-
-
-html body div{
-    font-family: "Intel One Mono";
-    font-stretch: 50%;
-    font-weight: 800;
-}
-        </style>
+        html body div{
+            font-family: "Intel One Mono";
+            font-stretch: 50%;
+            font-weight: 800;
+        }
+    </style>
 </head>
 
-<body style="font-size:16pt;width:480px;background:#111;" >
-    <div style="background:#a8d6dc;text-align:center;border-radius:12px;border:3px solid #c9edf7;padding:12px;padding-top:48px;"
-   <br/>
-<div id="voices">
-    <img id="voice1" src="static/1.png" width=80 alt="Sarah and Jane" onclick="selectVoice('voice1')" style="opacity:0.5;" >
-    <img id="voice2" src="static/2.png" width=80 alt="Bob and Nigel" onclick="selectVoice('voice2')" style="opacity:0.5;">
-    <img id="voice3" src="static/3.png" width=80 alt="Bob and Jane" onclick="selectVoice('voice3')" style="opacity:0.5;">
-    <img id="voice4" src="static/4.png" width=80 alt="Sarah and Nigel" onclick="selectVoice('voice4')" style="opacity:0.5;">
-</div><br/>
+<body style="font-size:16pt;width:480px;background:#1f1f1f;">
+    <div style="background:#338186;text-align:center;border-radius:12px;border:3px solid #2b7978;padding:12px;padding-top:28px;">
+        Global News Explorer<br/>
+        <br/>
+        <div id="voices">
+            <img id="voice1" src="static/1.png" width=80 alt="Sarah and Jane" onclick="selectVoice('voice1')" style="opacity:0.5;">
+            <img id="voice2" src="static/2.png" width=80 alt="Bob and Nigel" onclick="selectVoice('voice2')" style="opacity:0.5;">
+            <img id="voice3" src="static/3.png" width=80 alt="Bob and Jane" onclick="selectVoice('voice3')" style="opacity:0.5;">
+            <img id="voice4" src="static/4.png" width=80 alt="Sarah and Nigel" onclick="selectVoice('voice4')" style="opacity:0.5;">
+        </div>
+        <br/>
 
-<select id="languages" style="font-size:20pt">
-    <option value="en">Read out in English</option>
-    <option value="es">Read out in Spanish</option>
-    <option value="fr">Read out in French</option>
-    <option value="hi">Read out in Hindi</option>
-    <option value="it">Read out in Italian</option>
-    <option value="de">Read out in German</option>
-    <option value="pl">Read out in Polish</option>
-    <option value="pt">Read out in Portuguese</option>
-</select><br>
-<select id="feedLanguage" style="font-size:20pt;margin-top:8px;">
-    <option value="zh">News Published In China</option>
-    <option value="en">News Published In Britain</option>
-    <option value="de">News Published In Germany</option>
-    <option value="hi">News Published In India</option>
-    <option value="ja">News Published In Japan</option>
-    <option value="ru">News Published In Russia</option>
-</select><br/>
-
-
-<form id="feeds">
-    <div class="checkbox-container">
-        <input type="radio" id="worldNews" name="newsType" value="World News" checked>
-        <label for="worldNews">World News</label>
-    </div>
-    <div class="checkbox-container">
-        <input type="radio" id="nationalNews" name="newsType" value="National News">
-        <label for="nationalNews">National News</label>
-    </div>
-    <div class="checkbox-container">
-        <input type="radio" id="politics" name="newsType" value="Politics">
-        <label for="politics">Politics</label>
-    </div>
-    <div class="checkbox-container">
-        <input type="radio" id="business" name="newsType" value="Business">
-        <label for="business">Business</label>
-    </div>
-    <div class="checkbox-container">
-        <input type="radio" id="artsCulture" name="newsType" value="Arts & Culture">
-        <label for="artsCulture">Arts & Culture</label>
-    </div>
-    <div>
-        Enabling Language Learner will first read the text in it's native form, then read the translation.<br><br>
-        <select id="languagelearner">
-            <option value="1">Read translation only</option>
-            <option value="2">Read original only</option>
-            <option value="3">Read original then translation.</option>
-            <option value="4">Read translation then original.</option>
-
+        <select id="languages" style="font-size:16pt">
+            <option value="en">Broadcast in English</option>
+            <option value="es">Broadcast in Spanish</option>
+            <option value="fr">Broadcast in French</option>
+            <option value="hi">Broadcast in Hindi</option>
+            <option value="it">Broadcast in Italian</option>
+            <option value="de">Broadcast in German</option>
+            <option value="pl">Broadcast in Polish</option>
+            <option value="pt">Broadcast in Portuguese</option>
         </select>
-    <br><br>
-        <input type="submit" value="Start myRadio">
+        <br>
+        <select id="feedLanguage" style="font-size:16pt;margin-top:8px;">
+            <option value="zh">Source News From China</option>
+            <option value="en">Source News From Britain</option>
+            <option value="de">Source News From Germany</option>
+            <option value="hi">Source News From India</option>
+            <option value="ja">Source News From Japan</option>
+            <option value="ru">Source News From Russia</option>
+        </select>
+        <br/><br/>
+
+        <form id="feeds" style="font-size:16pt;">
+            <div style="margin-left:48px;">
+            <div class="checkbox-container">
+                <input type="radio" id="worldNews" name="newsType" value="World News" checked>
+                <label for="worldNews">World News</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="radio" id="nationalNews" name="newsType" value="National News">
+                <label for="nationalNews">National News</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="radio" id="politics" name="newsType" value="Politics">
+                <label for="politics">Politics</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="radio" id="business" name="newsType" value="Business">
+                <label for="business">Business</label>
+            </div>
+            <div class="checkbox-container">
+                <input type="radio" id="artsCulture" name="newsType" value="Arts & Culture">
+                <label for="artsCulture">Arts & Culture</label>
+            </div>
+        </div>
+            <div>
+                <!-- <select id="languagelearner" style="font-size:20pt">
+                    <option value="0">Read translation only.</option>
+                    <option value="1">Read translation and original.</option>
+                </select>
+                <br><br> -->
+                <input type="submit" value="Start Broadcast" style="font-size:16pt">
+            </div>
+            <div style="font-size:8pt">Disclaimer, information is retrieved, translated and announced using LLM and AI techniques that may introduce errors, please validate information before acting on it. Information is collected and summarised from public RSS feeds, for the list of feeds contact us.</div>
+        </form>
+        <script>
+            window.onload = function() {
+                selectVoice('voice1');
+            };
+            var selectedVoice = null;
+
+            function selectVoice(voiceId) {
+                if (selectedVoice) {
+                    document.getElementById(selectedVoice).style.opacity = 0.5;
+                }
+                selectedVoice = voiceId;
+                document.getElementById(selectedVoice).style.opacity = 1.0;
+
+                // Display flash message
+                if (voiceId == 'voice1') {
+                    flashMessage("Sarah");
+                } else if (voiceId == 'voice2') {
+                    flashMessage("Jane, Bob and Nigel");
+                } else if (voiceId == 'voice3') {
+                    flashMessage("Dave and Sandra");
+                } else if (voiceId == 'voice4') {
+                    flashMessage("Rachel and Dave");
+                }
+            }
+            document.getElementById('feeds').addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                var selectedVoices = selectedVoice; // Use the selectedVoice variable
+                var selectedLanguage = document.getElementById("languages").value;
+                var selectedFeedLanguage = document.getElementById("feedLanguage").value; // Added this line to get the selected feed language
+                var selectedFeed = document.querySelector('#feeds input[type=radio]:checked').value;
+                // var languageLearner = document.getElementById("languagelearner").value; // Get the selected value of languagelearner
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "/process", true);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.send(JSON.stringify({
+                    "voices": selectedVoices,
+                    "language": selectedLanguage,
+                    "feedLanguage": selectedFeedLanguage, // Added this line to pass the selected feed language
+                    "feed": selectedFeed
+                    // ,
+                    // "languagelearner": languageLearner 
+                }));
+                xhr.onload = function() {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        // The request was successful, do something with the response
+                        var response = JSON.parse(xhr.responseText);
+                        console.log(response);
+                    } else {
+                        // The request failed, handle the error
+                        console.error('Request failed with status ' + xhr.status);
+                    }
+                };
+            });
+            function flashMessage(message) {
+                // Create a new div element for the flash message
+                var flashDiv = document.createElement("div");
+                flashDiv.className = "flash-message";
+                flashDiv.textContent = message;
+
+                // Add the flash message to the body
+                document.body.appendChild(flashDiv);
+
+                // Remove the flash message after 3 seconds
+                setTimeout(function() {
+                    flashDiv.remove();
+                }, 1500);
+            }
+        </script>
     </div>
-    <div style="font-size:8pt">Disclaimer, information is retrieved, translated and announced using LLM and AI techniques that may introduce errors, please validate information before acting on it. Information is collected and summarised from public RSS feeds, for the list of feeds contact us.</div>
-</form>
-<script>
-    window.onload = function() {
-    selectVoice('voice1');
-};
-    var selectedVoice = null;
-
-function selectVoice(voiceId) {
-    if (selectedVoice) {
-        document.getElementById(selectedVoice).style.opacity = 0.5;
-    }
-    selectedVoice = voiceId;
-    document.getElementById(selectedVoice).style.opacity = 1.0;
-    
-    // Display flash message
-    if (voiceId == 'voice1') {
-        flashMessage("Sarah");
-    } else if (voiceId == 'voice2') {
-        flashMessage("Jane, Bob and Nigel");
-    } else if (voiceId == 'voice3') {
-        flashMessage("Dave and Sandra");
-    } else if (voiceId == 'voice4') {
-        flashMessage("Rachel and Dave");
-    }
-
-}
-document.getElementById('feeds').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    var selectedVoices = selectedVoice; // Use the selectedVoice variable
-    var selectedLanguage = document.getElementById("languages").value;
-    var selectedFeedLanguage = document.getElementById("feedLanguage").value; // Added this line to get the selected feed language
-    var selectedFeed = document.querySelector('#feeds input[type=radio]:checked').value;
-
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/process", true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    xhr.send(JSON.stringify({
-        "voices": selectedVoices,
-        "language": selectedLanguage,
-        "feedLanguage": selectedFeedLanguage, // Added this line to pass the selected feed language
-        "feed": selectedFeed
-    }));
-    xhr.onload = function() {
-        if (xhr.status >= 200 && xhr.status < 300) {
-            // The request was successful, do something with the response
-            var response = JSON.parse(xhr.responseText);
-            console.log(response);
-        } else {
-            // The request failed, handle the error
-            console.error('Request failed with status ' + xhr.status);
-        }
-    };
-});
-    function flashMessage(message) {
-    // Create a new div element for the flash message
-    var flashDiv = document.createElement("div");
-    flashDiv.className = "flash-message";
-    flashDiv.textContent = message;
-
-    // Add the flash message to the body
-    document.body.appendChild(flashDiv);
-
-    // Remove the flash message after 3 seconds
-    setTimeout(function() {
-        flashDiv.remove();
-    }, 1500);
-}
-</script>
-
 </body>
 </html>

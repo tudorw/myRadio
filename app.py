@@ -240,7 +240,7 @@ def process():
                 #     play(originalaudio)
                 # except APIError as e:
                 #     print(f"Error playing audio: {e}")  
-    return render_template('audio.html')
+    return render_template('index.html')
 
             
        
