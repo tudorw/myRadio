@@ -53,6 +53,7 @@ def process():
     # expensive, 12000 characters per hour @ 0.18 / 1000 = $2 / hour - 4 hrs a day ~ $8/day * 31 = $240 / month!
     # broadcast, or produce a daily 1/2 hour 'show' and deliver to users, limit of X variations, so no need to re-render audio, just save unique and construct final piece form pre-existing and new elements, 
     # loses 'time' aspect, live aspect, sad face...
+    # theme interlude music on country basis
 
     data = request.get_json()
     to_code = data.get('language')  
@@ -217,14 +218,32 @@ def process():
             except APIError as e:
                 print(f"Error writing audio: {e}")
 
-            try:
-                play(audio)
-            except APIError as e:
-                print(f"Error playing audio: {e}")
+            # try:
+            #     play(audio)
+            # except APIError as e:
+            #     print(f"Error playing audio: {e}")
+            
+            # languagelearner = data.get('languagelearner')
+            # if languagelearner == "1":
+            #     originalaudio = generate(
+            #     text=summary,
+            #     voice=voice,
+            #     model="eleven_multilingual_v1"
+            #     )
+            #     try:
+            #         with open(f'static/audio/audio_{datetime.now().strftime("%Y%m%d%H%M%S")}.mp3', 'wb') as f:
+            #             f.write(originalaudio)
+            #     except APIError as e:
+            #         print(f"Error writing audio: {e}")
+
+                # try:
+                #     play(originalaudio)
+                # except APIError as e:
+                #     print(f"Error playing audio: {e}")  
     return render_template('audio.html')
 
             
-                # rest of your code...
+       
             
             
 @app.route('/audio/<path:filename>')
