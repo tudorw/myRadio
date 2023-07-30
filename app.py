@@ -43,7 +43,7 @@ def process():
     # monetisation, product placement, advertising, limit rss feed based on subscription, limit time broadcasted to X minutes without sub...
     # play ambient elements in between articles
     # use sound 'hits' like radio jingles, etc, to break up the audio and make it more interesting
-    # extend the station metaphor with localised data, weather, traffic reports, etc
+    # extend the station metaphor with localised data, local news, weather, traffic reports, etc
     # how to source and monitor quality of rss feeds, check URL exists, validate feed, check feed for 'staleness' and 'spam' or 'off topic'
     # maintain  list of feeds and down vote for html in summary, bad formatting, extraneous code etc
     # machine translation disclaimers, ai summary disclaimers
@@ -99,9 +99,9 @@ def process():
                     feed = feedparser.parse("http://www.spiegel.de/schlagzeilen/rss/0,5291,676,00.xml")
                 if feedx == "Politics":
                     feed = feedparser.parse("https://www.politico.eu/tag/german-politics/feed/")
-            if from_code == "ar":
+            if from_code == "ru":
                 if feedx == "World News":
-                    feed = feedparser.parse("https://www.elkhabar.com/feeds/")
+                    feed = feedparser.parse("https://lenta.ru/rss")
                 if feedx == "Politics":
                     feed = feedparser.parse("https://www.politico.eu/tag/german-politics/feed/") 
                     
@@ -118,23 +118,26 @@ def process():
         print("Loaded model and rss")
         voice_index = 0
         for entry in feed.entries:
-            print(entry)
+            
             summary_text = entry['summary']
+            #print(summary_text)
 
             
             summary = model.generate(f"Please create a brief summary of the following text: {summary_text}", max_tokens=256, temp=1.1, repeat_penalty=1.18, n_batch=128,top_k=2, top_p=0.1)
             #translated_summary = translate(summary, 'en', language)
-            print ("Summarised Text" + summary)
+            #print (summary)
+            
             current_time = datetime.now().strftime("%H:%M")
-            print("Current Time =", current_time)
+         
             translated_summary = argostranslate.translate.translate(f"It is {current_time}." + summary, from_code, to_code)
-            print ("Translated Text" +translated_summary)
+            #print (translated_summary)
+    
             
            
 
             
             announcers =  data.get('voices')
-            print (announcers)
+ 
             if announcers == "voice1":
                 voices = ["Rachel"]
             if announcers == "voice2":
@@ -145,7 +148,7 @@ def process():
                 voices = ["SOYHLrjzK2X1ezoPC6cr", "jsCqWAovK2LkecY7zXl4"]
             voice = voices[voice_index]
             voice_index = (voice_index + 1) % len(voices)
-            print("Using Voice:" + voice)
+
                        
             audio = generate(
             text=translated_summary,
@@ -174,5 +177,5 @@ def serve_audio(filename):
     
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=False)
 

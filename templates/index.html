@@ -6,10 +6,121 @@
     <title>myRadio</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.14.0/js-yaml.min.js"></script>
+
+      <style>
+        
+        .flash-message {
+            position: fixed;
+            border-radius:9px;
+            top: 22px;
+            left: 22px;
+            width: 432px;
+            padding: 10px;
+            background-color: #55468f;
+            color: white;
+            opacity: 0.8;
+            text-align: center;
+            z-index: 1000;
+        }
+        
+        </style>
+        <style>
+            .checkbox-container {
+                display: flex;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+        
+            .checkbox-container input[type="checkbox"] {
+        margin-right: 20px;
+        height: 25px;
+        width: 25px;
+    }
+        
+            .checkbox-container label {
+                margin: 0;
+            }
+
+            @font-face {
+    font-family: "Intel One Mono";
+    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-regular.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: "Intel One Mono";
+    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-light.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Intel One Mono";
+    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-medium.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Intel One Mono";
+    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-bold.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-bold.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+
+@font-face {
+    font-family: "Intel One Mono";
+    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-italic.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-italic.woff") format("woff");
+    font-weight: 400;
+    font-style: italic;
+}
+
+
+@font-face {
+    font-family: "Intel One Mono";
+    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-lightitalic.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-lightitalic.woff") format("woff");
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Intel One Mono";
+    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-mediumitalic.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-mediumitalic.woff") format("woff");
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Intel One Mono";
+    src: url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff2/intelone-mono-font-family-bolditalic.woff2") format("woff2"),
+    url("https://cdn.jsdelivr.net/gh/intel/intel-one-mono@main/fonts/woff/intelone-mono-font-family-bolditalic.woff") format("woff");
+    font-weight: 700;
+    font-style: italic;
+}
+
+
+html body div{
+    font-family: "Intel One Mono";
+    font-stretch: 50%;
+    font-weight: 800;
+}
+        </style>
 </head>
-<body style="font-size:16pt;">
+
+<body style="font-size:16pt;width:480px;background:#111;" >
+    <div style="background:#198492;text-align:center;border-radius:12px;border:3px solid #68c5df;padding:12px;padding-top:48px;"
    <br/>
-<label>Choose your announcers</label>
 <div id="voices">
     <img id="voice1" src="static/1.png" width=80 alt="Sarah and Jane" onclick="selectVoice('voice1')" style="opacity:0.5;" >
     <img id="voice2" src="static/2.png" width=80 alt="Bob and Nigel" onclick="selectVoice('voice2')" style="opacity:0.5;">
@@ -18,81 +129,58 @@
 </div><br/>
 
 <select id="languages" style="font-size:20pt">
-    <option value="en">Read Out English</option>
-    <option value="es">Read Out Spanish</option>
-    <option value="fr">Read Out French</option>
-    <option value="hi">Read Out Hindi</option>
-    <option value="it">Read Out Italian</option>
-    <option value="de">Read Out German</option>
-    <option value="pl">Read Out Polish</option>
-    <option value="pt">Read Out Portuguese</option>
-</select>
-<select id="feedLanguage">
+    <option value="en">Read out in English</option>
+    <option value="es">Read out in Spanish</option>
+    <option value="fr">Read out in French</option>
+    <option value="hi">Read out in Hindi</option>
+    <option value="it">Read out in Italian</option>
+    <option value="de">Read out in German</option>
+    <option value="pl">Read out in Polish</option>
+    <option value="pt">Read out in Portuguese</option>
+</select><br>
+<select id="feedLanguage" style="font-size:20pt;margin-top:8px;">
     <option value="zh">News Published In China</option>
     <option value="en">News Published In Britain</option>
     <option value="de">News Published In Germany</option>
     <option value="hi">News Published In India</option>
     <option value="ja">News Published In Japan</option>
     <option value="ru">News Published In Russia</option>
-    <option value="es">News Published In Spain</option>
-</select><br/><br/>
-<label>Select A Topics That Interest You</label><br/><br/>
-<form id="feeds">
-    <input type="checkbox" id="worldNews" name="worldNews" value="World News">
-    <label for="worldNews"> World News</label><br>
-    <input type="checkbox" id="nationalNews" name="nationalNews" value="National News">
-    <label for="nationalNews"> National News</label><br>
-    <input type="checkbox" id="politics" name="politics" value="Politics">
-    <label for="politics"> Politics</label><br>
-    <input type="checkbox" id="business" name="business" value="Business">
-    <label for="business"> Business</label><br>
-    <!-- <input type="checkbox" id="technology" name="technology" value="Technology">
-    <label for="technology"> Technology</label><br> -->
-    <input type="checkbox" id="science" name="science" value="Science">
-    <label for="science"> Science</label><br>
-    <!-- <input type="checkbox" id="health" name="health" value="Health">
-    <label for="health"> Health</label><br>
-    <input type="checkbox" id="entertainment" name="entertainment" value="Entertainment">
-    <label for="entertainment"> Entertainment</label><br> -->
-    <input type="checkbox" id="sports" name="sports" value="Sports">
-    <label for="sports"> Sports</label><br>
-    <input type="checkbox" id="lifestyle" name="lifestyle" value="Lifestyle">
-    <label for="lifestyle"> Lifestyle</label><br>
-    <!-- <input type="checkbox" id="education" name="education" value="Education">
-    <label for="education"> Education</label><br> -->
-    <input type="checkbox" id="artsCulture" name="artsCulture" value="Arts & Culture">
-    <label for="artsCulture"> Arts & Culture</label><br>
-    <input type="checkbox" id="finance" name="finance" value="Finance">
-    <label for="finance"> Finance</label><br>
-    <!-- <input type="checkbox" id="travel" name="travel" value="Travel">
-    <label for="travel"> Travel</label><br>
-    <input type="checkbox" id="foodDrink" name="foodDrink" value="Food & Drink">
-    <label for="foodDrink"> Food & Drink</label><br>
-    <input type="checkbox" id="automotive" name="automotive" value="Automotive">
-    <label for="automotive"> Automotive</label><br>
-    <input type="checkbox" id="realEstate" name="realEstate" value="Real Estate">
-    <label for="realEstate"> Real Estate</label><br>
-    <input type="checkbox" id="opinion" name="opinion" value="Opinion">
-    <label for="opinion"> Opinion</label><br>
-    <input type="checkbox" id="crime" name="crime" value="Crime">
-    <label for="crime"> Crime</label><br>
-    <input type="checkbox" id="environment" name="environment" value="Environment">
-    <label for="environment"> Environment</label><br>
-    <input type="checkbox" id="religion" name="religion" value="Religion">
-    <label for="religion"> Religion</label><br>
-    <input type="checkbox" id="books" name="books" value="Books">
-    <label for="books"> Books</label><br> -->
-    <br/>
-    Enabling Language Learner will first read the text in it's native form, then read the translation.<br><br>
-    <select id="languagelearner">
-        <option value="1">Read translation only</option>
-        <option value="2">Read original only</option>
-        <option value="3">Read original then translation.</option>
-        <option value="4">Read translation then original.</option>
+</select><br/>
 
-    </select>
-<br><br>
-    <input type="submit" value="Start myRadio">
+
+<form id="feeds">
+    <div class="checkbox-container">
+        <input type="checkbox" id="worldNews" name="worldNews" value="World News">
+        <label for="worldNews">World News</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="nationalNews" name="nationalNews" value="National News">
+        <label for="nationalNews">National News</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="politics" name="politics" value="Politics">
+        <label for="politics">Politics</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="business" name="business" value="Business">
+        <label for="business">Business</label>
+    </div>
+    <div class="checkbox-container">
+        <input type="checkbox" id="artsCulture" name="artsCulture" value="Arts & Culture">
+        <label for="artsCulture">Arts & Culture</label>
+    </div>
+    <div>
+        Enabling Language Learner will first read the text in it's native form, then read the translation.<br><br>
+        <select id="languagelearner">
+            <option value="1">Read translation only</option>
+            <option value="2">Read original only</option>
+            <option value="3">Read original then translation.</option>
+            <option value="4">Read translation then original.</option>
+
+        </select>
+    <br><br>
+        <input type="submit" value="Start myRadio">
+    </div>
 </form>
 <script>
     window.onload = function() {
@@ -106,6 +194,18 @@ function selectVoice(voiceId) {
     }
     selectedVoice = voiceId;
     document.getElementById(selectedVoice).style.opacity = 1.0;
+    
+    // Display flash message
+    if (voiceId == 'voice1') {
+        flashMessage("Sarah");
+    } else if (voiceId == 'voice2') {
+        flashMessage("Jane, Bob and Nigel");
+    } else if (voiceId == 'voice3') {
+        flashMessage("Dave and Sandra");
+    } else if (voiceId == 'voice4') {
+        flashMessage("Rachel and Dave");
+    }
+
 }
     document.getElementById('feeds').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -140,6 +240,20 @@ function selectVoice(voiceId) {
             }
         };
     });
+    function flashMessage(message) {
+    // Create a new div element for the flash message
+    var flashDiv = document.createElement("div");
+    flashDiv.className = "flash-message";
+    flashDiv.textContent = message;
+
+    // Add the flash message to the body
+    document.body.appendChild(flashDiv);
+
+    // Remove the flash message after 3 seconds
+    setTimeout(function() {
+        flashDiv.remove();
+    }, 1500);
+}
 </script>
 
 </body>
