@@ -188,6 +188,43 @@ def process():
          
             translated_summary = argostranslate.translate.translate(f"It is {current_time}." + summary, from_code, to_code)
             #print (translated_summary)
+     
+            if to_code == "en":
+                to_code_display="English"
+            if to_code == "es":
+                to_code_display="Spanish"
+            if to_code == "fr":
+                to_code_display="French"
+            if to_code == "hi":
+                to_code_display="Hindi"
+            if to_code == "it":
+                to_code_display="Italian"
+            if to_code == "de":
+                to_code_display="German"
+            if to_code == "pl":
+                to_code_display="Polish"
+            if to_code == "pt":
+                to_code_display="Portuguese"
+
+            if from_code == "zh":
+                from_code_display="China"
+            if from_code == "en":
+                from_code_display="Britain"                
+            if from_code == "de":
+                from_code_display="Germany"
+            if from_code == "hi":
+                from_code_display="India"
+            if from_code == "js":
+                from_code_display="Japan"
+            if from_code == "ru":
+                from_code_display="Russia"
+
+            with open('static/title.txt', 'w') as f:
+                f.write(f"Language: {to_code_display}\n")
+                f.write(f"News Source: {from_code_display}\n")
+                f.write(f"{feedx}\n")
+
+            
     
             
            
