@@ -59,7 +59,7 @@ def process():
     print (to_code)
     from_code =  data.get('feedLanguage')
     print (from_code)
-    
+    model = GPT4All("ggml-model-gpt4all-falcon-q4_0.bin")
     
 
     # Download and install Argos Translate package
@@ -81,40 +81,96 @@ def process():
         #language = request.form.get('language')
         data = request.get_json()  # Get the JSON data sent in the POST request
         
-        feeds = data.get('feeds')
-        for feedx in feeds:
-            print(feedx)
-            if from_code == "en":
-                if feedx == "World News":
-                    feed = feedparser.parse("http://feeds.bbci.co.uk/news/world/rss.xml")
-                if feedx == "Politics":
-                    feed = feedparser.parse("http://feeds.bbci.co.uk/news/politics/rss.xml")    
-            if from_code == "es":
-                if feedx == "World News":
-                    feed = feedparser.parse("https://www.jornada.com.mx/rss/politica.xml")
-                if feedx == "Politics":
-                    feed = feedparser.parse("https://www.jornada.com.mx/rss/politica.xml") 
-            if from_code == "de":
-                if feedx == "World News":
-                    feed = feedparser.parse("http://www.spiegel.de/schlagzeilen/rss/0,5291,676,00.xml")
-                if feedx == "Politics":
-                    feed = feedparser.parse("https://www.politico.eu/tag/german-politics/feed/")
-            if from_code == "ru":
-                if feedx == "World News":
-                    feed = feedparser.parse("https://lenta.ru/rss")
-                if feedx == "Politics":
-                    feed = feedparser.parse("https://www.politico.eu/tag/german-politics/feed/") 
-                    
+        feedx = data.get('feed')
+        
+        print(feedx)
+        if from_code == "en":
+            if feedx == "World News":
+                feed = feedparser.parse("http://feeds.bbci.co.uk/news/world/rss.xml")
+            if feedx == "Politics":
+                feed = feedparser.parse("https://www.theguardian.com/politics/rss")    
+            if feedx == "National News":
+                feed = feedparser.parse("https://www.independent.co.uk/news/uk/rss")  
+            if feedx == "Business":
+                feed = feedparser.parse("https://www.telegraph.co.uk/business/rss.xml")  
+            if feedx == "Arts & Culture":
+                feed = feedparser.parse("https://www.britishcouncil.org/arts/rss")    
+
+        if from_code == "es":
+            if feedx == "World News":
+                feed = feedparser.parse("https://www.jornada.com.mx/rss/politica.xml")
+            if feedx == "Politics":
+                feed = feedparser.parse("https://rss.elconfidencial.com/espana/") 
+            if feedx == "National News":
+                feed = feedparser.parse("https://www.abc.es/rss/feeds/abc_Espana.xml")  
+            if feedx == "Business":
+                feed = feedparser.parse("https://www.financialred.com/feed/")  
+            if feedx == "Arts & Culture":
+                feed = feedparser.parse("http://api2.rtve.es/rss/temas_cultura.xml") 
+
+        if from_code == "de":
+            if feedx == "World News":
+                feed = feedparser.parse("http://www.spiegel.de/schlagzeilen/rss/0,5291,676,00.xml")
+            if feedx == "Politics":
+                feed = feedparser.parse("https://www.politico.eu/tag/german-politics/feed/")
+            if feedx == "National News":
+                feed = feedparser.parse("https://newsfeed.zeit.de/index")  
+            if feedx == "Business":
+                feed = feedparser.parse("https://www.handelsblatt.com/contentexport/feed/top-themen/")  
+            if feedx == "Arts & Culture":
+                feed = feedparser.parse("https://rss.sueddeutsche.de/rss/Kultur") 
+
+        if from_code == "ru":
+            if feedx == "World News":
+                feed = feedparser.parse("https://lenta.ru/rss")
+            if feedx == "Politics":
+                feed = feedparser.parse("https://www.politico.eu/tag/german-politics/feed/")
+            if feedx == "National News":
+                feed = feedparser.parse("https://ura.news/rss")  
+            if feedx == "Business":
+                feed = feedparser.parse("https://iz.ru/xml/rss/all.xml")  
+            if feedx == "Arts & Culture":
+                feed = feedparser.parse("https://tass.com/rss/v2.xml") 
+        if from_code == "zh":
+            if feedx == "World News":
+                feed = feedparser.parse("https://www.scmp.com/rss/91/feed")
+            if feedx == "Politics":
+                feed = feedparser.parse("https://thediplomat.com/feed/")
+            if feedx == "National News":
+                feed = feedparser.parse("http://www.chinadaily.com.cn/rss/china_rss.xml")  
+            if feedx == "Business":
+                feed = feedparser.parse("https://www.chinaeconomicreview.com/feed/")  
+            if feedx == "Arts & Culture":
+                feed = feedparser.parse("https://thechinaproject.com/feed/")        
+        if from_code == "hi":
+            if feedx == "World News":
+                feed = feedparser.parse("")
+            if feedx == "Politics":
+                feed = feedparser.parse("")
+            if feedx == "National News":
+                feed = feedparser.parse("")  
+            if feedx == "Business":
+                feed = feedparser.parse("")  
+            if feedx == "Arts & Culture":
+                feed = feedparser.parse("")
+        if from_code == "ja":
+            if feedx == "World News":
+                feed = feedparser.parse("")
+            if feedx == "Politics":
+                feed = feedparser.parse("")
+            if feedx == "National News":
+                feed = feedparser.parse("")  
+            if feedx == "Business":
+                feed = feedparser.parse("")  
+            if feedx == "Arts & Culture":
+                feed = feedparser.parse("")          
 
         print (feedx)
-
-        
-
-        
+        print (feed)
 
 
        
-        model = GPT4All("ggml-model-gpt4all-falcon-q4_0.bin")
+
         print("Loaded model and rss")
         voice_index = 0
         for entry in feed.entries:

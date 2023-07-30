@@ -6,7 +6,38 @@
     <title>myRadio</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/3.14.0/js-yaml.min.js"></script>
-
+    <style>
+        /* Hide the default radio button */
+        .checkbox-container input[type="radio"] {
+            display: none;
+        }
+    
+        /* Create a new custom radio button */
+        .checkbox-container input[type="radio"] + label:before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 50%;
+            border: 2px solid #345fa3;
+            vertical-align: middle;
+        }
+    
+        /* Style for checked state */
+        .checkbox-container input[type="radio"]:checked + label:before {
+            background: #1ccde0;
+        }
+    
+        /* Style for hover state */
+        .checkbox-container input[type="radio"]:hover + label:before {
+            border-color: #174451;
+        }
+    
+        .checkbox-container input[type="radio"]:checked:hover + label:before {
+            background: #bef619;
+        }
+    </style>
       <style>
         
         .flash-message {
@@ -119,7 +150,7 @@ html body div{
 </head>
 
 <body style="font-size:16pt;width:480px;background:#111;" >
-    <div style="background:#198492;text-align:center;border-radius:12px;border:3px solid #68c5df;padding:12px;padding-top:48px;"
+    <div style="background:#a8d6dc;text-align:center;border-radius:12px;border:3px solid #c9edf7;padding:12px;padding-top:48px;"
    <br/>
 <div id="voices">
     <img id="voice1" src="static/1.png" width=80 alt="Sarah and Jane" onclick="selectVoice('voice1')" style="opacity:0.5;" >
@@ -150,23 +181,23 @@ html body div{
 
 <form id="feeds">
     <div class="checkbox-container">
-        <input type="checkbox" id="worldNews" name="worldNews" value="World News">
+        <input type="radio" id="worldNews" name="newsType" value="World News" checked>
         <label for="worldNews">World News</label>
     </div>
     <div class="checkbox-container">
-        <input type="checkbox" id="nationalNews" name="nationalNews" value="National News">
+        <input type="radio" id="nationalNews" name="newsType" value="National News">
         <label for="nationalNews">National News</label>
     </div>
     <div class="checkbox-container">
-        <input type="checkbox" id="politics" name="politics" value="Politics">
+        <input type="radio" id="politics" name="newsType" value="Politics">
         <label for="politics">Politics</label>
     </div>
     <div class="checkbox-container">
-        <input type="checkbox" id="business" name="business" value="Business">
+        <input type="radio" id="business" name="newsType" value="Business">
         <label for="business">Business</label>
     </div>
     <div class="checkbox-container">
-        <input type="checkbox" id="artsCulture" name="artsCulture" value="Arts & Culture">
+        <input type="radio" id="artsCulture" name="newsType" value="Arts & Culture">
         <label for="artsCulture">Arts & Culture</label>
     </div>
     <div>
@@ -181,6 +212,7 @@ html body div{
     <br><br>
         <input type="submit" value="Start myRadio">
     </div>
+    <div style="font-size:8pt">Disclaimer, information is retrieved, translated and announced using LLM and AI techniques that may introduce errors, please validate information before acting on it. Information is collected and summarised from public RSS feeds, for the list of feeds contact us.</div>
 </form>
 <script>
     window.onload = function() {
@@ -207,39 +239,34 @@ function selectVoice(voiceId) {
     }
 
 }
-    document.getElementById('feeds').addEventListener('submit', function(e) {
-        e.preventDefault();
+document.getElementById('feeds').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-        var selectedVoices = selectedVoice; // Use the selectedVoice variable
-        var selectedLanguage = document.getElementById("languages").value;
-        var selectedFeedLanguage = document.getElementById("feedLanguage").value; // Added this line to get the selected feed language
-        var selectedFeeds = [];
-        var checkboxes = document.querySelectorAll('#feeds input[type=checkbox]:checked');
+    var selectedVoices = selectedVoice; // Use the selectedVoice variable
+    var selectedLanguage = document.getElementById("languages").value;
+    var selectedFeedLanguage = document.getElementById("feedLanguage").value; // Added this line to get the selected feed language
+    var selectedFeed = document.querySelector('#feeds input[type=radio]:checked').value;
 
-        for (var i = 0; i < checkboxes.length; i++) {
-            selectedFeeds.push(checkboxes[i].value);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/process", true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.send(JSON.stringify({
+        "voices": selectedVoices,
+        "language": selectedLanguage,
+        "feedLanguage": selectedFeedLanguage, // Added this line to pass the selected feed language
+        "feed": selectedFeed
+    }));
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 300) {
+            // The request was successful, do something with the response
+            var response = JSON.parse(xhr.responseText);
+            console.log(response);
+        } else {
+            // The request failed, handle the error
+            console.error('Request failed with status ' + xhr.status);
         }
-
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/process", true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        xhr.send(JSON.stringify({
-            "voices": selectedVoices,
-            "language": selectedLanguage,
-            "feedLanguage": selectedFeedLanguage, // Added this line to pass the selected feed language
-            "feeds": selectedFeeds
-        }));
-        xhr.onload = function() {
-            if (xhr.status >= 200 && xhr.status < 300) {
-                // The request was successful, do something with the response
-                var response = JSON.parse(xhr.responseText);
-                console.log(response);
-            } else {
-                // The request failed, handle the error
-                console.error('Request failed with status ' + xhr.status);
-            }
-        };
-    });
+    };
+});
     function flashMessage(message) {
     // Create a new div element for the flash message
     var flashDiv = document.createElement("div");
