@@ -11,7 +11,7 @@ from elevenlabs import set_api_key
 from elevenlabs.api.error import APIError
 
 app = Flask(__name__)
-set_api_key("4a77fbcdc43fe8f55297d162cc9099a2")
+set_api_key("")
 
 @app.route('/')
 def index():
